@@ -3,42 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fractions Test</title>
+    <title>Math Test</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        #notes { display: none; }
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .notes { display: none; background: #f9f9f9; padding: 10px; border: 1px solid #ccc; }
+        .question { margin-bottom: 10px; }
+        .submit-btn { margin-top: 20px; }
     </style>
 </head>
-<body class="container mt-4">
-    <button id="toggleNotes" class="btn btn-primary">View Notes</button>
-    <div id="notes" class="mt-3 p-3 border rounded">
+<body>
+    <button class="btn btn-primary" onclick="toggleNotes()">View Notes</button>
+    <div class="notes" id="notes">
         <h2>Study Notes</h2>
-        <p>Review the study guide before taking the test.</p>
+        <p>Fractions, decimals, percents, ratios, and rates review</p>
+        <p>
+            Study Guide: Fractions, Decimals, Percents, Ratios, and Rates
+
+Fractions
+
+1. Basics of Fractions
+
+A fraction represents a part of a whole.
+
+Numerator (top number) represents parts taken.
+
+Denominator (bottom number) represents total parts.
+
+Example: In the fraction , the numerator is 3, and the denominator is 4.
+
+2. Types of Fractions
+
+Proper Fractions: Numerator < Denominator (e.g., )
+
+Improper Fractions: Numerator > Denominator (e.g., )
+
+Mixed Numbers: Combination of a whole number and a fraction (e.g., 2 )
+
+Operations with Fractions
+
+1. Adding & Subtracting Fractions
+
+Same Denominator:
+
+Add/subtract numerators, keep the denominator.
+
+Example: 
+
+Different Denominators:
+
+Find the Least Common Denominator (LCD).
+
+Convert fractions to equivalent fractions with LCD.
+
+Add/subtract numerators, keep denominator.
+
+Example: 
+
+LCD = 12 → 
+
+2. Multiplying Fractions
+
+Multiply numerators together.
+
+Multiply denominators together.
+
+Simplify if possible.
+
+Example: 
+
+3. Dividing Fractions
+
+Flip the second fraction (reciprocal).
+
+Multiply as usual.
+
+Example: 
+
+Reciprocal: 
+
+Multiply: 
+
+Mixed Number: 
+
+Comparing Fractions
+
+Convert to same denominator or decimal form.
+
+Example: Compare  and :
+
+Convert to decimal:  vs. 
+
+Since , 
+
+Converting Mixed Numbers & Improper Fractions
+
+Mixed to Improper:
+
+Multiply whole number by denominator.
+
+Add numerator, keep denominator.
+
+Example: 
+
+Improper to Mixed:
+
+Divide numerator by denominator.
+
+Quotient = whole number, remainder = new numerator.
+
+Example: 
+
+Percents, Decimals, Ratios, and Rates
+
+1. Converting Between Forms
+
+Fraction to Decimal:
+
+Divide numerator by denominator.
+
+Example: 
+
+Decimal to Percent:
+
+Multiply by 100, add % sign.
+
+Example: 
+
+Percent to Fraction:
+
+Write percent as fraction over 100, simplify.
+
+Example: 
+
+Percent to Decimal:
+
+Divide by 100 or move decimal two places left.
+
+Example: 
+
+2. Ratios & Proportions
+
+Ratio: Comparison of two quantities (e.g., 3:4 or )
+
+Proportion: Two equal ratios.
+
+Example: 
+
+Solving Proportions
+
+Cross multiply and solve.
+
+Example: 
+
+
+
+, 
+
+3. Rates & Unit Rates
+
+Rate: Comparison of different units (e.g., 60 miles/2 hours).
+
+Unit Rate: Rate per one unit (e.g., 30 miles/hour).
+
+Finding Unit Rate: Divide.
+
+Example:  miles per hour.
+
+Solving Word Problems with Rates
+
+Identify the two quantities being compared.
+
+Write the rate as a fraction.
+
+Convert to a unit rate if necessary.
+
+Use multiplication or division to find missing values.
+
+Examples:
+
+Example 1: If a recipe calls for  cup of milk per 1 cup of flour, how much milk is needed for 4 cups of flour?
+
+Set up the proportion: 
+
+Cross multiply: 
+
+ cups of milk
+
+Example 2: A car travels 180 miles in 3 hours. What is the speed per hour?
+
+ miles per hour.
+
+Example 3: A store sells 5 apples for $2. How much does one apple cost?
+
+
+
+One apple costs $0.40.
+
+Key Tips:
+✔ Always simplify fractions.
+✔ Find common denominators when adding/subtracting.
+✔ Multiply normally for multiplication.
+✔ Flip and multiply for division.
+✔ Convert between fractions, decimals, and percents as needed.
+✔ Use cross-multiplication for proportions.
+✔ Understand unit rates for real-world applications.
+✔ Set up and solve word problems using rates and proportions.
+
+End of Study Guide
+
+
+        </p>
     </div>
-
-    <h1 class="mt-4">Fractions Test</h1>
-    <form id="testForm">
-        <!-- 30 Questions (Example for 1 question, repeat structure for others) -->
-        <div class="mb-3">
-            <label class="form-label">1. What is 1/2 + 1/3?</label>
-            <input type="text" class="form-control" name="q1">
-        </div>
-        <!-- Repeat similar structure for 29 more questions -->
-        
-        <button type="submit" class="btn btn-success">Submit</button>
+    
+    <h1>Math Test</h1>
+    <form id="mathTest">
+        <div id="questions"></div>
+        <button type="button" class="btn btn-success submit-btn" onclick="submitTest()">Submit</button>
+        <p id="score" class="mt-3"></p>
     </form>
-
+    
     <script>
-        document.getElementById("toggleNotes").addEventListener("click", function() {
-            var notes = document.getElementById("notes");
+        function toggleNotes() {
+            let notes = document.getElementById("notes");
+            let button = document.querySelector("button");
             if (notes.style.display === "none") {
                 notes.style.display = "block";
-                this.textContent = "Hide Notes";
+                button.innerText = "Hide Notes";
             } else {
                 notes.style.display = "none";
-                this.textContent = "View Notes";
+                button.innerText = "View Notes";
             }
+        }
+        
+        const questions = [
+            { q: "What is 3/4 + 1/4?", a: "1" },
+            { q: "Convert 0.75 to a fraction.", a: "3/4" },
+            { q: "What is 25% as a decimal?", a: "0.25" },
+            { q: "What is 5/8 as a decimal?", a: "0.625" },
+            { q: "Find the unit rate: 180 miles in 3 hours.", a: "60" },
+            { q: "Convert 2 1/3 to an improper fraction.", a: "7/3" },
+            { q: "Solve: 2/5 × 3/4", a: "6/20" },
+            { q: "Find the missing number: 3/5 = ?/10", a: "6" },
+            { q: "If a recipe needs 1/2 cup milk per 1 cup flour, how much milk for 3 cups of flour?", a: "1.5" },
+            { q: "What is the ratio of 8 to 12 in simplest form?", a: "2:3" },
+            { q: "Convert 0.45 to a fraction.", a: "9/20" },
+            { q: "What is 50% of 120?", a: "60" },
+            { q: "What is the decimal equivalent of 3/5?", a: "0.6" },
+            { q: "Convert 75% to a fraction.", a: "3/4" },
+            { q: "What is the mixed number form of 7/4?", a: "1 3/4" },
+            { q: "Find the least common denominator of 1/3 and 1/6.", a: "6" },
+            { q: "What is 1/4 ÷ 1/2?", a: "1/2" },
+            { q: "Simplify: 6/12", a: "1/2" },
+            { q: "What is 5/8 + 1/4?", a: "7/8" },
+            { q: "Convert 0.6 to a fraction.", a: "3/5" },
+            { q: "What is the unit rate: 240 miles in 4 hours?", a: "60" },
+            { q: "What is 1/3 of 90?", a: "30" },
+            { q: "Solve for x: 3/4 = x/8", a: "6" },
+            { q: "What is 2/5 × 5/6?", a: "10/30" },
+            { q: "Simplify: 12/36", a: "1/3" },
+            { q: "Convert 9/10 to a decimal.", a: "0.9" },
+            { q: "What is 2 1/2 as an improper fraction?", a: "5/2" },
+            { q: "What is the ratio of 15 to 45 in simplest form?", a: "1:3" },
+            { q: "Find the unit rate: 300 miles in 5 hours.", a: "60" },
+            { q: "Convert 80% to a decimal.", a: "0.8" }
+        ];
+        
+        let quizContainer = document.getElementById("questions");
+        questions.forEach((item, index) => {
+            let div = document.createElement("div");
+            div.classList.add("question");
+            div.innerHTML = `<p>${index + 1}. ${item.q}</p><input type='text' id='q${index}' class='form-control'>`;
+            quizContainer.appendChild(div);
         });
+        
+        function submitTest() {
+            let score = 0;
+            questions.forEach((item, index) => {
+                let userAnswer = document.getElementById(`q${index}`).value.trim();
+                if (userAnswer === item.a) {
+                    score++;
+                }
+            });
+            document.getElementById("score").innerText = `You scored ${score} out of ${questions.length}.`;
+        }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
